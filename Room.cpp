@@ -10,9 +10,6 @@ void Room::addDevice(std::shared_ptr<SmartDevice> device) {
     devices.push_back(device);
 }
 
-// void Room::removeDevice(std::shared_ptr<SmartDevice> device) {
-//     devices.erase(std::remove(devices.begin(), devices.end(), device), devices.end());
-// }
 void Room::removeDevice(std::shared_ptr<SmartDevice> device) {
     cout << "-- Device: " << device->toString() << " is being removed --" << endl;
     devices.erase(std::remove_if(devices.begin(), devices.end(),

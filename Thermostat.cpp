@@ -1,4 +1,6 @@
 #include "Thermostat.h"
+#include "Sensor.h"
+#include "TemperatureSensor.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -63,4 +65,22 @@ double Thermostat::getTemperature() const {
 std::string Thermostat::toString() const {
     //return getDeviceType() + " - Current Temp: " + getStatus();
     return getDeviceType();
+}
+
+//comp4:
+void Thermostat::update(Sensor* sensor) {
+    if (sensor->getType() == "TemperatureSensor") {
+        TemperatureSensor* temperatureSensor = dynamic_cast<TemperatureSensor*>(sensor);
+        if (temperatureSensor) {
+            double currentTemperature = temperatureSensor->getCurrentTemperature();
+            // Adjust thermostat based on temperature
+            if (currentTemperature > targetTemperature) {
+                cout << "~~ Temperature sensed to increase ~~";
+                adjustTemperature(currentTemperature);
+            } else if (currentTemperature < targetTemperature) {
+                cout << "~~ Temperature sensed to decrease ~~";
+                adjustTemperature(currentTemperature);
+            }
+        }
+    }
 }

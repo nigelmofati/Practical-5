@@ -26,3 +26,14 @@ std::string DoorLock::toString() const {
     //return getDeviceType() + " - Current Temp: " + getStatus();
     return getDeviceType();
 }
+
+//comp4:
+void DoorLock::update(Sensor* sensor) {
+    if (sensor->getType() == "MotionSensor") {
+        std::cout << "~~ Door locked due to motion ~~" << std::endl;
+        // Perform door-lock action
+        std::cout << "Locking door" << std::endl;
+        isLocked = true;
+        getStatus();
+    }
+}

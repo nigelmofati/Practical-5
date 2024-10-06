@@ -7,7 +7,7 @@
 class Thermostat : public SmartDevice {
 public:
     Thermostat(double initialTemperature);  // Constructor with initial temperature
-
+    //comp1
     void performAction() override;
     void performAction(double currentRoomTemperature);
     std::string getStatus() const override;
@@ -19,6 +19,8 @@ public:
     void setTargetTemperature(double target);  // Set target temperature
     double getTemperature() const;  // Get current thermostat temperature
 
+    //comp4:
+    void update(Sensor* sensor) override;
 
 private:
     double temperature;

@@ -1,19 +1,20 @@
 #ifndef MOTIONSENSOR_H
 #define MOTIONSENSOR_H
+
 #include "Sensor.h"
 #include "SmartDevice.h"
-class MotionSensor : Sensor {
+
+#include <iostream>
+#include <memory>
+
+class MotionSensor : public Sensor {
+public:
+    void addDevice(std::shared_ptr<SmartDevice> device) override;
+    void removeDevice(std::shared_ptr<SmartDevice> device) override;
+    void notifyDevices() override;
+    std::string getType() const override;
 
 private:
-	bool observer;
-	SmartDevice* subject;
-
-public:
-	MotionSensor();
-
-	void getStatus();
-
-	void performAction();
+    std::vector<std::shared_ptr<SmartDevice>> devices;
 };
-
 #endif

@@ -1,5 +1,6 @@
 // Light.cpp
 #include "Light.h"
+#include "Sensor.h"
 #include <iostream>
 #include <string>
 
@@ -27,4 +28,15 @@ std::string Light::getDeviceType() const {
 std::string Light::toString() const {
     //return getDeviceType() + " - " + getStatus();
     return getDeviceType();
+}
+
+//comp4:
+void Light::update(Sensor* sensor) {
+    if (sensor->getType() == "MotionSensor") {
+        std::cout << "~~ Light turned on due to motion ~~" << std::endl;
+        // Perform light-on action:
+        std::cout << "Turning on light" << std::endl;
+        isOn = true;
+        getStatus();
+    }
 }
