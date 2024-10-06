@@ -1,14 +1,17 @@
+// Light.h
 #ifndef LIGHT_H
-#define LIGHT_H
+#define LIGHT_Hs
+
 #include "SmartDevice.h"
-class Light : SmartDevice {
 
+class Light : public SmartDevice {
 public:
-	bool isActivated;
+    void performAction() override;
+    std::string getStatus() const override;
+    std::string getDeviceType() const override;
+    std::string toString() const override;
 
-	void ManualToggle();
-
-	Light();
+private:
+    bool isOn;
 };
-
 #endif

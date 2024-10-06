@@ -1,11 +1,30 @@
+// Light.cpp
 #include "Light.h"
+#include <iostream>
+#include <string>
 
-void Light::ManualToggle() {
-	// TODO - implement Light::ManualToggle
-	throw "Not yet implemented";
+using namespace std;
+
+void Light::performAction() {
+    if (isOn) {
+        std::cout << "-- Turning off light --" << std::endl;
+        isOn = false;
+    } else {
+        std::cout << "-- Turning on light --" << std::endl;
+        isOn = true;
+    }
 }
 
-Light::Light() {
-	// TODO - implement Light::Light
-	throw "Not yet implemented";
+std::string Light::getStatus() const {
+    return isOn ? "Light is: on" : "Light is: off";
+}
+
+std::string Light::getDeviceType() const {
+    return "Light";
+}
+
+// Override toString for specific details
+std::string Light::toString() const {
+    //return getDeviceType() + " - " + getStatus();
+    return getDeviceType();
 }
